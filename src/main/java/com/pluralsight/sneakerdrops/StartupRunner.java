@@ -49,9 +49,33 @@ public class StartupRunner implements CommandLineRunner {
                 case 3 -> findByPrice();
                 case 4 -> findByYear();
                 case 5 -> findByPriceAndYear();
+                case 6 -> addSneaker();
+                case 7 -> updateSneaker();
+                case 8 -> deleteSneaker();
                 case 0 -> istrue = false;
             }
         }
+    }
+
+    private void addSneaker() {
+        System.out.println("Enter sneaker model: ");
+        String model = scanner.nextLine();
+        System.out.println("Enter sneaker price: ");
+        double price = scanner.nextDouble();
+        scanner.nextLine();
+        System.out.println("Enter sneaker release year: ");
+        int releaseYear = scanner.nextInt();
+        scanner.nextLine();
+
+        Sneaker sneaker = new Sneaker(model, price, releaseYear);
+        sneakerRepository.save(sneaker);
+        System.out.println("Sneaker added successfully!");
+    }
+
+    private void updateSneaker() {
+    }
+
+    private void deleteSneaker() {
     }
 
     private void findByPriceAndYear() {
