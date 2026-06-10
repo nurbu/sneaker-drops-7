@@ -88,6 +88,16 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     private void deleteSneaker() {
+        System.out.println("Enter the sneaker id");
+        Long id = scanner.nextLong();
+        scanner.nextLine();
+
+        if (sneakerRepository.existsById(id)) {
+            sneakerRepository.deleteById(id);
+            System.out.println("Deleted sneaker: " + id);
+        } else {
+            System.out.println("No sneaker found with that id " + id);
+        }
     }
 
     private void findByPriceAndYear() {
