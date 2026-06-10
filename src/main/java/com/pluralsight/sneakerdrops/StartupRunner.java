@@ -73,6 +73,18 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     private void updateSneaker() {
+        System.out.println("Enter sneaker id:");
+        Long id = scanner.nextLong();
+        scanner.nextLine();
+
+        sneakerRepository.findById(id).ifPresent(sneaker -> {
+            System.out.println("Enter new sneaker price: ");
+            double newPrice = scanner.nextDouble();
+            scanner.nextLine();
+            sneaker.setPrice(newPrice);
+            sneakerRepository.save(sneaker);
+            System.out.println("Sneaker price updated successfully!");
+        });
     }
 
     private void deleteSneaker() {
